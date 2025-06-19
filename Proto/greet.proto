@@ -1,0 +1,31 @@
+syntax="proto3";
+
+option go_package="./proto";  // this can be alerted which we do in big org and ./proto menas where genrated code will be create
+
+package greet_service; // we need it later so make it package
+
+
+//case sensitive keep in mind grretservice and method
+service GreetService{
+    // it is from white notebook
+    // example it normal req and rsp like rest api called unary api
+    rpc SayHello(NoParam)returns(HelloResponse);
+
+    //server streaming white notebook look
+    rpc SayHelloServerStreaming(Nameslist)returns(stream HelloResponse);
+
+    // client streaming
+    rpc SayHelloClientStreaming(StreamHelloRequest)returns(MessageList);
+
+    //Bidirectional
+    rpc SayHelloBidirectionalStreaming(StreamHelloRequest)returns(stream HelloResponse);
+
+}
+
+messsage NoParam{};
+
+message HelloResponse{
+    string message = 1;
+}
+
+
