@@ -9,6 +9,7 @@ package greet_service; // we need it later so make it package
 service GreetService{
     // it is from white notebook
     // example it normal req and rsp like rest api called unary api
+    //say hello is a method
     rpc SayHello(NoParam)returns(HelloResponse);
 
     //server streaming white notebook look
@@ -22,10 +23,24 @@ service GreetService{
 
 }
 
-messsage NoParam{};
+message NoParam{};
 
 message HelloResponse{
     string message = 1;
 }
 
+message HelloRequest{
+    string name = 1;
+}
 
+message Nameslist{ 
+    repeated string names = 1;
+}
+
+message StreamHelloRequest{
+    repeated string names = 1;
+}
+
+message MessageList{
+    string name = 1;
+}
