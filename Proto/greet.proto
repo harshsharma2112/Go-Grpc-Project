@@ -5,11 +5,13 @@ option go_package="./proto";  // this can be alerted which we do in big org and 
 package greet_service; // we need it later so make it package
 
 
-//case sensitive keep in mind grretservice and method
+//case sensitive keep in mind grretservice 
+//Go interfaces and client/server code for your service (GreetServiceClient, etc.)
 service GreetService{
     // it is from white notebook
     // example it normal req and rsp like rest api called unary api
-    //say hello is a method
+    //say hello is a method that we need to implememt on server side
+    // on client side it is a function we need to implement
     rpc SayHello(NoParam)returns(HelloResponse);
 
     //server streaming white notebook look
@@ -22,7 +24,7 @@ service GreetService{
     rpc SayHelloBidirectionalStreaming(StreamHelloRequest)returns(stream HelloResponse);
 
 }
-
+//every messae type will create the struct in generated code of Noparam
 message NoParam{};
 
 message HelloResponse{
@@ -32,7 +34,7 @@ message HelloResponse{
 message HelloRequest{
     string name = 1;
 }
-
+//every messae type will create the struct in generated code of nameslist
 message Nameslist{ 
     repeated string names = 1;
 }
