@@ -7,6 +7,7 @@ package greet_service; // we need it later so make it package
 
 //case sensitive keep in mind grretservice 
 //Go interfaces and client/server code for your service (GreetServiceClient, etc.)
+// it will create  separate interface for server and client 
 service GreetService{
     // it is from white notebook
     // example it normal req and rsp like rest api called unary api

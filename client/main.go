@@ -29,8 +29,9 @@ func main() {
 	Names := &pb.Nameslist{
 		Names: []string{"Akhil", "Alice", "BOb"},
 	}
-
-	//SayHello(client) this is for unary api
+//you don’t need to implement the SayHello() method on the client — you just call it.
+//method is already implememted in the client side you need to call it	
+//SayHello(client) this is for unary api
     
 	SayHelloServerStream(client,Names)
 

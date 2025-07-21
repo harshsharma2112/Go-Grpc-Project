@@ -14,7 +14,8 @@ const (
 
 // we cretaed the struct becaus interface is there in greet_grpc.pb.go
 type helloserver struct {
-	pb.GreetServiceServer
+	pb.GreetServiceServer// pb.UnimplementedGreetServiceServer it is empty auotgegenerated struct which have all methods 
+	// so basically it help to implememnt those methods which we need only.
 }
 
 func main() {
@@ -27,6 +28,7 @@ func main() {
 	//now i will create the grpc server
 	grpcServer := grpc.NewServer()
 	//registering service
+	//why hellos erver struct becasue You can’t pass individual methods — Go requires a type that implements the full interface.
 	pb.RegisterGreetServiceServer(grpcServer, &helloserver{})
 	log.Printf("Server failed to start %v", lis.Addr())
 
