@@ -238,7 +238,7 @@ func (x *StreamHelloRequest) GetNames() []string {
 
 type MessageList struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name          []string               `protobuf:"bytes,1,rep,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -273,11 +273,11 @@ func (*MessageList) Descriptor() ([]byte, []int) {
 	return file_proto_greet_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *MessageList) GetName() string {
+func (x *MessageList) GetName() []string {
 	if x != nil {
 		return x.Name
 	}
-	return ""
+	return nil
 }
 
 var File_proto_greet_proto protoreflect.FileDescriptor
@@ -295,7 +295,7 @@ const file_proto_greet_proto_rawDesc = "" +
 	"\x12StreamHelloRequest\x12\x14\n" +
 	"\x05names\x18\x01 \x03(\tR\x05names\"!\n" +
 	"\vMessageList\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name2\xdc\x02\n" +
+	"\x04name\x18\x01 \x03(\tR\x04name2\xdc\x02\n" +
 	"\fGreetService\x12@\n" +
 	"\bSayHello\x12\x16.greet_service.NoParam\x1a\x1c.greet_service.HelloResponse\x12S\n" +
 	"\x17SayHelloServerStreaming\x12\x18.greet_service.Nameslist\x1a\x1c.greet_service.HelloResponse0\x01\x12T\n" +

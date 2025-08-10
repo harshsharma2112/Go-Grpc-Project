@@ -33,11 +33,13 @@ const (
 // case sensitive keep in mind grretservice
 // Go interfaces and client/server code for your service (GreetServiceClient, etc.)
 // it will create  separate interface for server and client
+// For eevry method signature will be created that we need to use and we can use the alias too which will also created.
 type GreetServiceClient interface {
 	// it is from white notebook
 	// example it normal req and rsp like rest api called unary api
 	// say hello is a method that we need to implememt on server side
 	// on client side it is a function we need to implement
+	// method , interface will be in grpc.pb.go
 	SayHello(ctx context.Context, in *NoParam, opts ...grpc.CallOption) (*HelloResponse, error)
 	// server streaming white notebook look
 	SayHelloServerStreaming(ctx context.Context, in *Nameslist, opts ...grpc.CallOption) (grpc.ServerStreamingClient[HelloResponse], error)
@@ -118,11 +120,13 @@ type GreetService_SayHelloBidirectionalStreamingClient = grpc.BidiStreamingClien
 // case sensitive keep in mind grretservice
 // Go interfaces and client/server code for your service (GreetServiceClient, etc.)
 // it will create  separate interface for server and client
+// For eevry method signature will be created that we need to use and we can use the alias too which will also created.
 type GreetServiceServer interface {
 	// it is from white notebook
 	// example it normal req and rsp like rest api called unary api
 	// say hello is a method that we need to implememt on server side
 	// on client side it is a function we need to implement
+	// method , interface will be in grpc.pb.go
 	SayHello(context.Context, *NoParam) (*HelloResponse, error)
 	// server streaming white notebook look
 	SayHelloServerStreaming(*Nameslist, grpc.ServerStreamingServer[HelloResponse]) error
