@@ -4,7 +4,7 @@ option go_package="./proto";  // this can be alerted which we do in big org and 
 
 package greet_service; // we need it later so make it package
 
-
+//Below part is Service definition
 //case sensitive keep in mind grretservice 
 //Go interfaces and client/server code for your service (GreetServiceClient, etc.)
 // it will create  separate interface for server and client 
@@ -19,12 +19,13 @@ service GreetService{
     rpc SayHelloServerStreaming(Nameslist)returns(stream HelloResponse);
 
     // client streaming
-    rpc SayHelloClientStreaming(StreamHelloRequest)returns(MessageList);
+    rpc SayHelloClientStreaming(stream HelloRequest)returns(MessageList);
 
     //Bidirectional
-    rpc SayHelloBidirectionalStreaming(StreamHelloRequest)returns(stream HelloResponse);
+    rpc SayHelloBidirectionalStreaming(stream HelloRequest)returns(stream HelloResponse);
 
 }
+// note : if we delete a field, we should not reuse the number
 //every messae type will create the struct in generated code of Noparam
 message NoParam{};
 

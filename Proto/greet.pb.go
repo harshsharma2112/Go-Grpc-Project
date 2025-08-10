@@ -21,6 +21,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// note : if we delete a field, we should not reuse the number
+// every messae type will create the struct in generated code of Noparam
 type NoParam struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -145,6 +147,7 @@ func (x *HelloRequest) GetName() string {
 	return ""
 }
 
+// every messae type will create the struct in generated code of nameslist
 type Nameslist struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Names         []string               `protobuf:"bytes,1,rep,name=names,proto3" json:"names,omitempty"`
@@ -292,12 +295,12 @@ const file_proto_greet_proto_rawDesc = "" +
 	"\x12StreamHelloRequest\x12\x14\n" +
 	"\x05names\x18\x01 \x03(\tR\x05names\"!\n" +
 	"\vMessageList\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name2\xe4\x02\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name2\xdc\x02\n" +
 	"\fGreetService\x12@\n" +
 	"\bSayHello\x12\x16.greet_service.NoParam\x1a\x1c.greet_service.HelloResponse\x12S\n" +
-	"\x17SayHelloServerStreaming\x12\x18.greet_service.Nameslist\x1a\x1c.greet_service.HelloResponse0\x01\x12X\n" +
-	"\x17SayHelloClientStreaming\x12!.greet_service.StreamHelloRequest\x1a\x1a.greet_service.MessageList\x12c\n" +
-	"\x1eSayHelloBidirectionalStreaming\x12!.greet_service.StreamHelloRequest\x1a\x1c.greet_service.HelloResponse0\x01B\tZ\a./protob\x06proto3"
+	"\x17SayHelloServerStreaming\x12\x18.greet_service.Nameslist\x1a\x1c.greet_service.HelloResponse0\x01\x12T\n" +
+	"\x17SayHelloClientStreaming\x12\x1b.greet_service.HelloRequest\x1a\x1a.greet_service.MessageList(\x01\x12_\n" +
+	"\x1eSayHelloBidirectionalStreaming\x12\x1b.greet_service.HelloRequest\x1a\x1c.greet_service.HelloResponse(\x010\x01B\tZ\a./protob\x06proto3"
 
 var (
 	file_proto_greet_proto_rawDescOnce sync.Once
@@ -323,8 +326,8 @@ var file_proto_greet_proto_goTypes = []any{
 var file_proto_greet_proto_depIdxs = []int32{
 	0, // 0: greet_service.GreetService.SayHello:input_type -> greet_service.NoParam
 	3, // 1: greet_service.GreetService.SayHelloServerStreaming:input_type -> greet_service.Nameslist
-	4, // 2: greet_service.GreetService.SayHelloClientStreaming:input_type -> greet_service.StreamHelloRequest
-	4, // 3: greet_service.GreetService.SayHelloBidirectionalStreaming:input_type -> greet_service.StreamHelloRequest
+	2, // 2: greet_service.GreetService.SayHelloClientStreaming:input_type -> greet_service.HelloRequest
+	2, // 3: greet_service.GreetService.SayHelloBidirectionalStreaming:input_type -> greet_service.HelloRequest
 	1, // 4: greet_service.GreetService.SayHello:output_type -> greet_service.HelloResponse
 	1, // 5: greet_service.GreetService.SayHelloServerStreaming:output_type -> greet_service.HelloResponse
 	5, // 6: greet_service.GreetService.SayHelloClientStreaming:output_type -> greet_service.MessageList
