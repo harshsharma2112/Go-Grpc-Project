@@ -35,14 +35,21 @@ import (
 // 	log.Printf("%v", res.Message)
 
 // }
+
+// we passing this interface becoz interfce had those methods
+// alias can also be used but it is better to use interface
+// In this case, pb.GreetServiceClient is an interface, and stream is a value that implements this interface.
+// we can not directly point to interface thats why not using *
 func callSayHelloClientStream(stream pb.GreetServiceClient, names *pb.Nameslist) {
 	log.Printf("streaming started")
+	//calling that fucn
 	clientStream, err := stream.SayHelloClientStreaming(context.Background())
 	if err != nil {
 		log.Fatalf("could not send names:%v", err)
 	}
 
 	for _, name := range names.Names {
+		//creating the new instance of struct on heap & allocate it to heap
 		req := &pb.HelloRequest{
 			Name: name,
 		}
